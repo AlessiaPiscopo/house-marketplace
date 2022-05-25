@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 import { ReactComponent as ArrowRightIcon } from "../assets/svg/keyboardArrowRightIcon.svg";
 // don't need visibilityIcon as ReactComponent, bcus we are using this as an img src
 import visibilityIcon from "../assets/svg/visibilityIcon.svg";
@@ -25,6 +27,26 @@ const SignIn = () => {
     }));
   };
 
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
+
+    try {
+      const auth = getAuth();
+
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      if (userCredential.user) {
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className="pageContainer">
@@ -33,7 +55,7 @@ const SignIn = () => {
         </header>
 
         <main>
-          <form>
+          <form onSubmit={handleSubmit}>
             <input
               type="email"
               className="emailInput"

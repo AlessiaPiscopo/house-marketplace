@@ -85,7 +85,7 @@ const SignUp = () => {
     <>
       <div className="pageContainer">
         <header>
-          <p className="pageHeader">Welcome Back</p>
+          <p className="pageHeader">Sign Up</p>
         </header>
 
         <main>
@@ -127,7 +127,7 @@ const SignUp = () => {
               Forgot Password?
             </Link>
             <div className="signInBar">
-              <p className="signInText">Sign In</p>
+              <p className="signInText">Sign Up</p>
               <button className="signInButton">
                 <ArrowRightIcon fill="#fff" width="34px" height="34px" />
               </button>
